@@ -4,6 +4,8 @@ import 'package:state_management/model/tourism_place.dart';
 import 'package:state_management/done_tourism_list.dart';
 import 'package:state_management/list_item.dart';
 import 'package:state_management/tourism_list.dart';
+import 'package:provider/provider.dart';
+import 'package:state_management/provider/done_tourism_provider.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key? key}) : super(key: key);
@@ -13,7 +15,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final List<TourismPlace> doneTourismPlaceList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,15 +26,14 @@ class _MainScreenState extends State<MainScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return DoneTourismList(
-                        doneTourismPlaceList: doneTourismPlaceList);
+                    return const DoneTourismList();
                   }),
                 );
               },
               icon: const Icon(Icons.done_outline))
         ],
       ),
-      body: TourismList(doneTourismPlaceList: doneTourismPlaceList),
+      body: TourismList(),
     );
   }
 }
